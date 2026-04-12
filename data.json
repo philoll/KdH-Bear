@@ -1,0 +1,807 @@
+[
+  {
+    "date": "2026-03-30 01:00:00",
+    "trap": "Trap 1",
+    "rank": 1,
+    "name": "Rory Ashburton",
+    "points": 12188873775
+  },
+  {
+    "date": "2026-03-30 01:00:00",
+    "trap": "Trap 1",
+    "rank": 2,
+    "name": "Chomp",
+    "points": 10932944464
+  },
+  {
+    "date": "2026-03-30 01:00:00",
+    "trap": "Trap 1",
+    "rank": 3,
+    "name": "Lord Jon Snow X",
+    "points": 9306264846
+  },
+  {
+    "date": "2026-03-30 01:00:00",
+    "trap": "Trap 1",
+    "rank": 4,
+    "name": "Inosuke",
+    "points": 8253430965
+  },
+  {
+    "date": "2026-03-30 01:00:00",
+    "trap": "Trap 1",
+    "rank": 5,
+    "name": "Indigrace",
+    "points": 7436504089
+  },
+  {
+    "date": "2026-03-30 01:00:00",
+    "trap": "Trap 1",
+    "rank": 6,
+    "name": "IgMetal",
+    "points": 6123901282
+  },
+  {
+    "date": "2026-03-30 01:00:00",
+    "trap": "Trap 1",
+    "rank": 7,
+    "name": "Flave",
+    "points": 5548845753
+  },
+  {
+    "date": "2026-03-30 01:00:00",
+    "trap": "Trap 1",
+    "rank": 8,
+    "name": "\u0627\u0628\u0648\u0631\u06cc\u0627\u0646",
+    "points": 5399684915
+  },
+  {
+    "date": "2026-03-30 01:00:00",
+    "trap": "Trap 1",
+    "rank": 9,
+    "name": "Sparta",
+    "points": 4891242748
+  },
+  {
+    "date": "2026-03-30 01:00:00",
+    "trap": "Trap 1",
+    "rank": 10,
+    "name": "Magic of Darkn",
+    "points": 2840234356
+  },
+  {
+    "date": "2026-03-30 01:00:00",
+    "trap": "Trap 1",
+    "rank": 11,
+    "name": "Daf",
+    "points": 603651447
+  },
+  {
+    "date": "2026-03-30 01:00:00",
+    "trap": "Trap 1",
+    "rank": 12,
+    "name": "Leeringasaprick",
+    "points": 88883745
+  },
+  {
+    "date": "2026-03-31 12:00:00",
+    "trap": "Trap 2",
+    "rank": 1,
+    "name": "SP142",
+    "points": 14914376193
+  },
+  {
+    "date": "2026-03-31 12:00:00",
+    "trap": "Trap 2",
+    "rank": 2,
+    "name": "Philol",
+    "points": 13309933906
+  },
+  {
+    "date": "2026-03-31 12:00:00",
+    "trap": "Trap 2",
+    "rank": 3,
+    "name": "Kyotumi",
+    "points": 12679890817
+  },
+  {
+    "date": "2026-03-31 12:00:00",
+    "trap": "Trap 2",
+    "rank": 4,
+    "name": "Proud\u7a7a",
+    "points": 12113255983
+  },
+  {
+    "date": "2026-03-31 12:00:00",
+    "trap": "Trap 2",
+    "rank": 5,
+    "name": "\u300c\u03c1 BUNNY \u03c3\u300d",
+    "points": 10075339914
+  },
+  {
+    "date": "2026-03-31 12:00:00",
+    "trap": "Trap 2",
+    "rank": 6,
+    "name": "Ritako",
+    "points": 10072337159
+  },
+  {
+    "date": "2026-03-31 12:00:00",
+    "trap": "Trap 2",
+    "rank": 7,
+    "name": "h\u0101rit\u0101h\u0101zz\u012b",
+    "points": 6572599860
+  },
+  {
+    "date": "2026-03-31 12:00:00",
+    "trap": "Trap 2",
+    "rank": 8,
+    "name": "karim",
+    "points": 3275849575
+  },
+  {
+    "date": "2026-03-31 12:00:00",
+    "trap": "Trap 2",
+    "rank": 9,
+    "name": "Hubert fon Vinci",
+    "points": 1367442349
+  },
+  {
+    "date": "2026-03-31 12:00:00",
+    "trap": "Trap 2",
+    "rank": 10,
+    "name": "Abu Shawq",
+    "points": 268381646
+  },
+  {
+    "date": "2026-03-31 12:00:00",
+    "trap": "Trap 2",
+    "rank": 11,
+    "name": "Sadanaru",
+    "points": 14051189
+  },
+  {
+    "date": "2026-04-01 01:00:00",
+    "trap": "Trap 1",
+    "rank": 1,
+    "name": "Rory Ashburton",
+    "points": 12410146954
+  },
+  {
+    "date": "2026-04-01 01:00:00",
+    "trap": "Trap 1",
+    "rank": 2,
+    "name": "Chomp",
+    "points": 10368893442
+  },
+  {
+    "date": "2026-04-01 01:00:00",
+    "trap": "Trap 1",
+    "rank": 3,
+    "name": "Lord Jon Snow X",
+    "points": 9518674831
+  },
+  {
+    "date": "2026-04-01 01:00:00",
+    "trap": "Trap 1",
+    "rank": 4,
+    "name": "Indigrace",
+    "points": 7814000947
+  },
+  {
+    "date": "2026-04-01 01:00:00",
+    "trap": "Trap 1",
+    "rank": 5,
+    "name": "IgMetal",
+    "points": 6220375927
+  },
+  {
+    "date": "2026-04-01 01:00:00",
+    "trap": "Trap 1",
+    "rank": 6,
+    "name": "Crazy Turk",
+    "points": 6043679103
+  },
+  {
+    "date": "2026-04-01 01:00:00",
+    "trap": "Trap 1",
+    "rank": 7,
+    "name": "JoJo MarcusJR",
+    "points": 5630447610
+  },
+  {
+    "date": "2026-04-01 01:00:00",
+    "trap": "Trap 1",
+    "rank": 8,
+    "name": "Leiras",
+    "points": 4630961192
+  },
+  {
+    "date": "2026-04-01 01:00:00",
+    "trap": "Trap 1",
+    "rank": 9,
+    "name": "asa",
+    "points": 4329177783
+  },
+  {
+    "date": "2026-04-01 01:00:00",
+    "trap": "Trap 1",
+    "rank": 10,
+    "name": "Magic of Darkn",
+    "points": 4040613897
+  },
+  {
+    "date": "2026-04-01 01:00:00",
+    "trap": "Trap 1",
+    "rank": 11,
+    "name": "\u0627\u0628\u0648\u0631\u06cc\u0627\u0646",
+    "points": 3930947140
+  },
+  {
+    "date": "2026-04-01 01:00:00",
+    "trap": "Trap 1",
+    "rank": 12,
+    "name": "Cubcao",
+    "points": 3178638224
+  },
+  {
+    "date": "2026-04-01 01:00:00",
+    "trap": "Trap 1",
+    "rank": 13,
+    "name": "Sparta",
+    "points": 1373715307
+  },
+  {
+    "date": "2026-04-02 12:00:00",
+    "trap": "Trap 2",
+    "rank": 1,
+    "name": "SP142",
+    "points": 16595566601
+  },
+  {
+    "date": "2026-04-02 12:00:00",
+    "trap": "Trap 2",
+    "rank": 2,
+    "name": "Philol",
+    "points": 14763904345
+  },
+  {
+    "date": "2026-04-02 12:00:00",
+    "trap": "Trap 2",
+    "rank": 3,
+    "name": "Proud\u7a7a",
+    "points": 13049626373
+  },
+  {
+    "date": "2026-04-02 12:00:00",
+    "trap": "Trap 2",
+    "rank": 4,
+    "name": "\u300c\u03c1 BUNNY \u03c3\u300d",
+    "points": 11062243456
+  },
+  {
+    "date": "2026-04-02 12:00:00",
+    "trap": "Trap 2",
+    "rank": 5,
+    "name": "Ritako",
+    "points": 10710921205
+  },
+  {
+    "date": "2026-04-02 12:00:00",
+    "trap": "Trap 2",
+    "rank": 6,
+    "name": "L1620",
+    "points": 9965817041
+  },
+  {
+    "date": "2026-04-02 12:00:00",
+    "trap": "Trap 2",
+    "rank": 7,
+    "name": "Hubert fon Vinci",
+    "points": 9251237372
+  },
+  {
+    "date": "2026-04-02 12:00:00",
+    "trap": "Trap 2",
+    "rank": 8,
+    "name": "Kyotumi",
+    "points": 5770945889
+  },
+  {
+    "date": "2026-04-02 12:00:00",
+    "trap": "Trap 2",
+    "rank": 9,
+    "name": "QQ",
+    "points": 5103622583
+  },
+  {
+    "date": "2026-04-02 12:00:00",
+    "trap": "Trap 2",
+    "rank": 10,
+    "name": "Karen AUS",
+    "points": 2675390588
+  },
+  {
+    "date": "2026-04-02 12:00:00",
+    "trap": "Trap 2",
+    "rank": 11,
+    "name": "\u0627\u0644\u062d\u064a\u0627\u0629 \u0627\u0644\u062c\u0645\u064a\u0644\u0629",
+    "points": 552826237
+  },
+  {
+    "date": "2026-04-02 12:00:00",
+    "trap": "Trap 2",
+    "rank": 12,
+    "name": "lukanio",
+    "points": 370281372
+  },
+  {
+    "date": "2026-04-02 12:00:00",
+    "trap": "Trap 2",
+    "rank": 13,
+    "name": "Leeringasaprick",
+    "points": 131676343
+  },
+  {
+    "date": "2026-04-03 01:00:00",
+    "trap": "Trap 1",
+    "rank": 1,
+    "name": "Rory Ashburton",
+    "points": 14414685620
+  },
+  {
+    "date": "2026-04-03 01:00:00",
+    "trap": "Trap 1",
+    "rank": 2,
+    "name": "Chomp",
+    "points": 12046023271
+  },
+  {
+    "date": "2026-04-03 01:00:00",
+    "trap": "Trap 1",
+    "rank": 3,
+    "name": "Lord Jon Snow X",
+    "points": 11483260750
+  },
+  {
+    "date": "2026-04-03 01:00:00",
+    "trap": "Trap 1",
+    "rank": 4,
+    "name": "Milo7",
+    "points": 9647566803
+  },
+  {
+    "date": "2026-04-03 01:00:00",
+    "trap": "Trap 1",
+    "rank": 5,
+    "name": "Indigrace",
+    "points": 9330188041
+  },
+  {
+    "date": "2026-04-03 01:00:00",
+    "trap": "Trap 1",
+    "rank": 6,
+    "name": "< JoJo MarcusJR >",
+    "points": 8927045678
+  },
+  {
+    "date": "2026-04-03 01:00:00",
+    "trap": "Trap 1",
+    "rank": 7,
+    "name": "Inosuke",
+    "points": 7771795381
+  },
+  {
+    "date": "2026-04-03 01:00:00",
+    "trap": "Trap 1",
+    "rank": 8,
+    "name": "IgMetal",
+    "points": 7314896425
+  },
+  {
+    "date": "2026-04-03 01:00:00",
+    "trap": "Trap 1",
+    "rank": 9,
+    "name": "Cubcao",
+    "points": 6756057862
+  },
+  {
+    "date": "2026-04-03 01:00:00",
+    "trap": "Trap 1",
+    "rank": 10,
+    "name": "THOMAS HO",
+    "points": 33537318
+  },
+  {
+    "date": "2026-04-05 01:00:00",
+    "trap": "Trap 1",
+    "rank": 1,
+    "name": "Rory Ashburton",
+    "points": 11325718014
+  },
+  {
+    "date": "2026-04-05 01:00:00",
+    "trap": "Trap 1",
+    "rank": 2,
+    "name": "Chomp",
+    "points": 10295029814
+  },
+  {
+    "date": "2026-04-05 01:00:00",
+    "trap": "Trap 1",
+    "rank": 3,
+    "name": "Lord Jon Snow X",
+    "points": 9097227835
+  },
+  {
+    "date": "2026-04-05 01:00:00",
+    "trap": "Trap 1",
+    "rank": 4,
+    "name": "Indigrace",
+    "points": 7627179216
+  },
+  {
+    "date": "2026-04-05 01:00:00",
+    "trap": "Trap 1",
+    "rank": 5,
+    "name": "IgMetal",
+    "points": 6442514672
+  },
+  {
+    "date": "2026-04-05 01:00:00",
+    "trap": "Trap 1",
+    "rank": 6,
+    "name": "Magic of Darkn",
+    "points": 4082034115
+  },
+  {
+    "date": "2026-04-05 01:00:00",
+    "trap": "Trap 1",
+    "rank": 7,
+    "name": "Bezorona Zero",
+    "points": 3865327715
+  },
+  {
+    "date": "2026-04-05 01:00:00",
+    "trap": "Trap 1",
+    "rank": 8,
+    "name": "Sparta",
+    "points": 3736766308
+  },
+  {
+    "date": "2026-04-05 01:00:00",
+    "trap": "Trap 1",
+    "rank": 9,
+    "name": "< JoJo MarcusJR >",
+    "points": 1365906562
+  },
+  {
+    "date": "2026-04-05 01:00:00",
+    "trap": "Trap 1",
+    "rank": 10,
+    "name": "Milo7",
+    "points": 518197706
+  },
+  {
+    "date": "2026-04-05 01:00:00",
+    "trap": "Trap 1",
+    "rank": 11,
+    "name": "Luiz vieire br",
+    "points": 455692497
+  },
+  {
+    "date": "2026-04-06 12:00:00",
+    "trap": "Trap 2",
+    "rank": 1,
+    "name": "SP142",
+    "points": 11710229203
+  },
+  {
+    "date": "2026-04-06 12:00:00",
+    "trap": "Trap 2",
+    "rank": 2,
+    "name": "Philol",
+    "points": 10450354975
+  },
+  {
+    "date": "2026-04-06 12:00:00",
+    "trap": "Trap 2",
+    "rank": 3,
+    "name": "Kyotumi",
+    "points": 10109237850
+  },
+  {
+    "date": "2026-04-06 12:00:00",
+    "trap": "Trap 2",
+    "rank": 4,
+    "name": "Proud\u7a7a",
+    "points": 6303544187
+  },
+  {
+    "date": "2026-04-06 12:00:00",
+    "trap": "Trap 2",
+    "rank": 5,
+    "name": "Ritako",
+    "points": 6286159115
+  },
+  {
+    "date": "2026-04-06 12:00:00",
+    "trap": "Trap 2",
+    "rank": 6,
+    "name": "QQ",
+    "points": 5846802932
+  },
+  {
+    "date": "2026-04-06 12:00:00",
+    "trap": "Trap 2",
+    "rank": 7,
+    "name": "Kitiwa",
+    "points": 3762807183
+  },
+  {
+    "date": "2026-04-06 12:00:00",
+    "trap": "Trap 2",
+    "rank": 8,
+    "name": "Leeringasaprick",
+    "points": 107053263
+  },
+  {
+    "date": "2026-04-08 12:00:00",
+    "trap": "Trap 2",
+    "rank": 1,
+    "name": "Philol",
+    "points": 7315861130
+  },
+  {
+    "date": "2026-04-08 12:00:00",
+    "trap": "Trap 2",
+    "rank": 2,
+    "name": "Kyotumi",
+    "points": 7057791273
+  },
+  {
+    "date": "2026-04-08 12:00:00",
+    "trap": "Trap 2",
+    "rank": 3,
+    "name": "SP142",
+    "points": 5141214845
+  },
+  {
+    "date": "2026-04-08 12:00:00",
+    "trap": "Trap 2",
+    "rank": 4,
+    "name": "Hubert fon Vinci",
+    "points": 4956288450
+  },
+  {
+    "date": "2026-04-08 12:00:00",
+    "trap": "Trap 2",
+    "rank": 5,
+    "name": "Ritako",
+    "points": 4628687053
+  },
+  {
+    "date": "2026-04-08 12:00:00",
+    "trap": "Trap 2",
+    "rank": 6,
+    "name": "asa",
+    "points": 2691296285
+  },
+  {
+    "date": "2026-04-08 12:00:00",
+    "trap": "Trap 2",
+    "rank": 7,
+    "name": "Philz",
+    "points": 970043687
+  },
+  {
+    "date": "2026-04-09 01:00:00",
+    "trap": "Trap 1",
+    "rank": 1,
+    "name": "Rory Ashburton",
+    "points": 13930172920
+  },
+  {
+    "date": "2026-04-09 01:00:00",
+    "trap": "Trap 1",
+    "rank": 2,
+    "name": "Lord Jon Snow X",
+    "points": 11247888787
+  },
+  {
+    "date": "2026-04-09 01:00:00",
+    "trap": "Trap 1",
+    "rank": 3,
+    "name": "Chomp",
+    "points": 11169304797
+  },
+  {
+    "date": "2026-04-09 01:00:00",
+    "trap": "Trap 1",
+    "rank": 4,
+    "name": "Inosuke",
+    "points": 9666863857
+  },
+  {
+    "date": "2026-04-09 01:00:00",
+    "trap": "Trap 1",
+    "rank": 5,
+    "name": "Indigrace",
+    "points": 9549096373
+  },
+  {
+    "date": "2026-04-09 01:00:00",
+    "trap": "Trap 1",
+    "rank": 6,
+    "name": "Sparta",
+    "points": 8446723327
+  },
+  {
+    "date": "2026-04-09 01:00:00",
+    "trap": "Trap 1",
+    "rank": 7,
+    "name": "IgMetal",
+    "points": 7964715846
+  },
+  {
+    "date": "2026-04-09 01:00:00",
+    "trap": "Trap 1",
+    "rank": 8,
+    "name": "scuboo",
+    "points": 6471629729
+  },
+  {
+    "date": "2026-04-09 01:00:00",
+    "trap": "Trap 1",
+    "rank": 9,
+    "name": "< JoJo MarcusJR >",
+    "points": 4679229530
+  },
+  {
+    "date": "2026-04-09 01:00:00",
+    "trap": "Trap 1",
+    "rank": 10,
+    "name": "Milo7",
+    "points": 1218260985
+  },
+  {
+    "date": "2026-04-10 12:00:00",
+    "trap": "Trap 2",
+    "rank": 1,
+    "name": "SP142",
+    "points": 11424019814
+  },
+  {
+    "date": "2026-04-10 12:00:00",
+    "trap": "Trap 2",
+    "rank": 2,
+    "name": "Philol",
+    "points": 10141873813
+  },
+  {
+    "date": "2026-04-10 12:00:00",
+    "trap": "Trap 2",
+    "rank": 3,
+    "name": "L1620",
+    "points": 7661676918
+  },
+  {
+    "date": "2026-04-10 12:00:00",
+    "trap": "Trap 2",
+    "rank": 4,
+    "name": "Hubert fon Vinci",
+    "points": 6581862955
+  },
+  {
+    "date": "2026-04-10 12:00:00",
+    "trap": "Trap 2",
+    "rank": 5,
+    "name": "Shtako",
+    "points": 6578653061
+  },
+  {
+    "date": "2026-04-10 12:00:00",
+    "trap": "Trap 2",
+    "rank": 6,
+    "name": "GALATASARAY 27",
+    "points": 4626434126
+  },
+  {
+    "date": "2026-04-10 12:00:00",
+    "trap": "Trap 2",
+    "rank": 7,
+    "name": "asa",
+    "points": 4195610424
+  },
+  {
+    "date": "2026-04-10 12:00:00",
+    "trap": "Trap 2",
+    "rank": 8,
+    "name": "QQ",
+    "points": 2969447007
+  },
+  {
+    "date": "2026-04-10 12:00:00",
+    "trap": "Trap 2",
+    "rank": 9,
+    "name": "Kyotumi",
+    "points": 2452328600
+  },
+  {
+    "date": "2026-04-10 12:00:00",
+    "trap": "Trap 2",
+    "rank": 10,
+    "name": "Philz",
+    "points": 921396312
+  },
+  {
+    "date": "2026-04-10 12:00:00",
+    "trap": "Trap 2",
+    "rank": 11,
+    "name": "lukanio",
+    "points": 865026872
+  },
+  {
+    "date": "2026-04-10 12:00:00",
+    "trap": "Trap 2",
+    "rank": 12,
+    "name": "\u0627\u0644\u062d\u064a\u0627\u0629 \u0627\u0644\u062c\u0645\u064a\u0644\u0629",
+    "points": 292279477
+  },
+  {
+    "date": "2026-04-11 01:00:00",
+    "trap": "Trap 1",
+    "rank": 1,
+    "name": "Rory Ashburton",
+    "points": 6354108895
+  },
+  {
+    "date": "2026-04-11 01:00:00",
+    "trap": "Trap 1",
+    "rank": 2,
+    "name": "Lord Jon Snow X",
+    "points": 5258639138
+  },
+  {
+    "date": "2026-04-11 01:00:00",
+    "trap": "Trap 1",
+    "rank": 3,
+    "name": "Chomp",
+    "points": 4720724604
+  },
+  {
+    "date": "2026-04-11 01:00:00",
+    "trap": "Trap 1",
+    "rank": 4,
+    "name": "Inosuke",
+    "points": 4580556579
+  },
+  {
+    "date": "2026-04-11 01:00:00",
+    "trap": "Trap 1",
+    "rank": 5,
+    "name": "Sparta",
+    "points": 2644257603
+  },
+  {
+    "date": "2026-04-11 01:00:00",
+    "trap": "Trap 1",
+    "rank": 6,
+    "name": "Karen AUS",
+    "points": 1854966227
+  },
+  {
+    "date": "2026-04-11 01:00:00",
+    "trap": "Trap 1",
+    "rank": 7,
+    "name": "Magic of Darko",
+    "points": 1562131586
+  },
+  {
+    "date": "2026-04-11 01:00:00",
+    "trap": "Trap 1",
+    "rank": 8,
+    "name": "Luiz vieire br",
+    "points": 635067073
+  }
+]

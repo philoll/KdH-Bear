@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KdH Damage Leaderboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #161922;
+    --surface2: #1e2330;
+    --border: #2a3044;
+    --accent: #f0b429;
+    --text: #e4e8f0;
+    --muted: #7a8099;
+    --trap1: #f0b429;
+    --trap2: #4f9eff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; font-size: 14px; }
+
+  #loadingScreen {
+    position: fixed; inset: 0; background: var(--bg);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 12px; z-index: 999;
+  }
+  #loadingScreen .spinner {
+    width: 36px; height: 36px; border: 3px solid var(--border);
+    border-top-color: var(--accent); border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  #loadingScreen .msg { color: var(--muted); font-size: 13px; }
+  #loadingScreen.error .msg { color: #e05252; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  #app { display: none; }
+  #app.ready { display: block; }
+
+  header {
+    background: linear-gradient(135deg, #1a1e2e 0%, #0d0f14 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  header h1 { font-size: 22px; font-weight: 700; color: var(--accent); letter-spacing: 1px; }
+  header .subtitle { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .badge { background: var(--surface2); border: 1px solid var(--border); border-radius: 20px;
+           padding: 4px 12px; font-size: 12px; color: var(--muted); }
+
+  .controls {
+    display: flex; gap: 10px; align-items: center; padding: 16px 32px;
+    background: var(--surface); border-bottom: 1px solid var(--border); flex-wrap: wrap;
+  }
+  .controls label { font-size: 12px; color: var(--muted); margin-right: 4px; }
+  .btn-group { display: flex; gap: 4px; }
+  .btn {
+    background: var(--surface2); border: 1px solid var(--border); color: var(--muted);
+    padding: 5px 14px; border-radius: 6px; cursor: pointer; font-size: 12px; transition: all 0.15s;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--text); }
+  .btn.active { background: var(--accent); border-color: var(--accent); color: #000; font-weight: 600; }
+  .btn.t1.active { background: var(--trap1); border-color: var(--trap1); color: #000; }
+  .btn.t2.active { background: var(--trap2); border-color: var(--trap2); color: #000; }
+
+  .section-label {
+    padding: 20px 32px 4px;
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1.2px; color: var(--muted);
+  }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 12px 32px 24px; }
+  .grid.wide { grid-template-columns: 1fr; }
+  .span2 { grid-column: span 2; }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 20px; overflow: hidden;
+  }
+  .card h2 { font-size: 13px; font-weight: 600; color: var(--muted); text-transform: uppercase;
+             letter-spacing: 0.8px; margin-bottom: 16px; }
+
+  .chart-wrap { position: relative; height: 260px; }
+  .chart-wrap.tall { height: 360px; }
+
+  .player-toggles-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+  .player-toggles { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .ptbtn {
+    padding: 3px 10px; border-radius: 12px; cursor: pointer; font-size: 11px;
+    border: 1px solid var(--border); background: var(--surface2); color: var(--muted); transition: all 0.15s;
+  }
+  .ptbtn.on { color: #fff; border-color: transparent; }
+  .toggle-all-btn {
+    padding: 3px 10px; border-radius: 12px; cursor: pointer; font-size: 11px;
+    border: 1px solid var(--border); background: var(--surface2); color: var(--text);
+    font-weight: 600; transition: all 0.15s; white-space: nowrap;
+  }
+  .toggle-all-btn:hover { border-color: var(--accent); }
+  .toggle-divider { width: 1px; height: 18px; background: var(--border); margin: 0 2px; }
+
+  .table-wrap { overflow-x: auto; max-height: 420px; overflow-y: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead th {
+    background: var(--surface2); color: var(--muted); font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.7px; padding: 10px 14px;
+    position: sticky; top: 0; z-index: 1; text-align: left; border-bottom: 1px solid var(--border);
+  }
+  thead th.num { text-align: right; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; }
+  tbody tr:hover { background: var(--surface2); }
+  tbody td { padding: 9px 14px; }
+  .rank1 td { color: var(--accent); font-weight: 700; }
+  .unranked td { color: var(--muted); }
+  .trap-pill { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+  .trap-pill.t1 { background: rgba(240,180,41,0.15); color: var(--trap1); }
+  .trap-pill.t2 { background: rgba(79,158,255,0.15); color: var(--trap2); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  @media (max-width: 800px) {
+    .grid { grid-template-columns: 1fr; }
+    .span2 { grid-column: span 1; }
+    header, .controls, .grid, .section-label { padding-left: 16px; padding-right: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="loadingScreen">
+  <div class="spinner"></div>
+  <div class="msg" id="loadMsg">Loading data…</div>
+</div>
+
+<div id="app">
+  <header>
+    <div>
+      <h1>⚔ KdH Damage Leaderboard</h1>
+      <div class="subtitle">Bear Trap Event — Damage Tracking</div>
+    </div>
+    <div class="badge" id="lastUpdated"></div>
+  </header>
+
+  <div class="controls">
+    <label>Trap:</label>
+    <div class="btn-group">
+      <button class="btn active" id="fAll" onclick="setTrap('all')">All</button>
+      <button class="btn t1"     id="fT1"  onclick="setTrap('Trap 1')">Trap 1</button>
+      <button class="btn t2"     id="fT2"  onclick="setTrap('Trap 2')">Trap 2</button>
+    </div>
+  </div>
+
+  <div class="section-label">Trap Metrics</div>
+  <div class="grid">
+    <div class="card">
+      <h2>Total Group Score per Trap</h2>
+      <div class="chart-wrap"><canvas id="chartSessionScore"></canvas></div>
+    </div>
+    <div class="card">
+      <h2>Participants per Trap</h2>
+      <div class="chart-wrap"><canvas id="chartSessionPax"></canvas></div>
+    </div>
+  </div>
+
+  <div class="section-label">Player Metrics</div>
+  <div class="grid">
+    <div class="card span2">
+      <h2>Damage Over Time</h2>
+      <div class="player-toggles-header">
+        <button class="toggle-all-btn" onclick="selectAllPlayers()">All</button>
+        <button class="toggle-all-btn" onclick="selectNoPlayers()">None</button>
+        <div class="toggle-divider"></div>
+        <div class="player-toggles" id="playerToggles" style="margin-bottom:0"></div>
+      </div>
+      <div class="chart-wrap tall"><canvas id="chartTime"></canvas></div>
+    </div>
+
+    <div class="card">
+      <h2>Traps Joined</h2>
+      <div class="chart-wrap tall"><canvas id="chartSessions"></canvas></div>
+    </div>
+
+    <div class="card">
+      <h2>Best Rank per Trap</h2>
+      <div class="chart-wrap tall"><canvas id="chartRank"></canvas></div>
+    </div>
+  </div>
+
+  <div class="section-label">Trap Data</div>
+  <div class="grid wide" style="padding-top:0">
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th><th>Trap</th><th>Rank</th><th>Player</th><th class="num">Points</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const PALETTE = [
+  '#f0b429','#4f9eff','#52e0a0','#e05252','#b07dff',
+  '#ff8c42','#52d9e0','#e0c452','#a0e052','#ff52b0',
+  '#7db0ff','#ff7d9e','#52b0ff','#ffd452','#52ffd4',
+  '#c87dff','#ff9e52','#52e0c8','#e08052','#7dffd4',
+];
+
+let RAW = [];
+let trapFilter = 'all';
+let activeChartPlayers = new Set();
+let chartTime, chartSessionScore, chartSessionPax, chartSessions, chartRank;
+
+function fmt(n) { return typeof n === 'number' ? n.toLocaleString() : n; }
+function filtered() { return trapFilter === 'all' ? RAW : RAW.filter(r => r.trap === trapFilter); }
+function allDates(data) { return [...new Set(data.map(r => r.date))].sort(); }
+function rankedOnly(data) { return data.filter(r => r.rank !== 'Unranked'); }
+function topPlayers(data, n = 20) {
+  const totals = {};
+  rankedOnly(data).forEach(r => { totals[r.name] = (totals[r.name] || 0) + r.points; });
+  return Object.entries(totals).sort((a,b) => b[1]-a[1]).slice(0, n).map(e => e[0]);
+}
+function playerColour(name, list) { return PALETTE[list.indexOf(name) % PALETTE.length]; }
+
+// ── Session score ────────────────────────────────────────────────────────
+function buildSessionScoreChart(data) {
+  const dates = allDates(data);
+  const scores = dates.map(d => rankedOnly(data).filter(r => r.date === d).reduce((s,r) => s + r.points, 0));
+  const traps  = dates.map(d => data.find(r => r.date === d)?.trap);
+  const cols   = traps.map(t => t === 'Trap 1' ? '#f0b42999' : '#4f9eff99');
+  const bords  = traps.map(t => t === 'Trap 1' ? '#f0b429' : '#4f9eff');
+  if (chartSessionScore) chartSessionScore.destroy();
+  chartSessionScore = new Chart(document.getElementById('chartSessionScore'), {
+    type: 'bar',
+    data: { labels: dates, datasets: [{ data: scores, backgroundColor: cols, borderColor: bords, borderWidth: 1.5 }] },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: {
+        label: ctx => 'Group total: ' + ctx.parsed.y.toLocaleString(),
+        afterLabel: ctx => traps[ctx.dataIndex]
+      }}},
+      scales: {
+        x: { ticks: { color: '#7a8099', maxRotation: 35 }, grid: { color: '#2a3044' } },
+        y: { ticks: { color: '#7a8099', callback: v => (v/1e9).toFixed(0)+'B' }, grid: { color: '#2a3044' } }
+      }
+    }
+  });
+}
+
+// ── Participants ─────────────────────────────────────────────────────────
+function buildSessionPaxChart(data) {
+  const dates  = allDates(data);
+  const counts = dates.map(d => new Set(rankedOnly(data).filter(r => r.date === d).map(r => r.name)).size);
+  const traps  = dates.map(d => data.find(r => r.date === d)?.trap);
+  const cols   = traps.map(t => t === 'Trap 1' ? '#f0b42999' : '#4f9eff99');
+  const bords  = traps.map(t => t === 'Trap 1' ? '#f0b429' : '#4f9eff');
+  if (chartSessionPax) chartSessionPax.destroy();
+  chartSessionPax = new Chart(document.getElementById('chartSessionPax'), {
+    type: 'bar',
+    data: { labels: dates, datasets: [{ data: counts, backgroundColor: cols, borderColor: bords, borderWidth: 1.5 }] },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: {
+        label: ctx => ctx.parsed.y + ' participants',
+        afterLabel: ctx => traps[ctx.dataIndex]
+      }}},
+      scales: {
+        x: { ticks: { color: '#7a8099', maxRotation: 35 }, grid: { color: '#2a3044' } },
+        y: { ticks: { color: '#7a8099', stepSize: 1 }, grid: { color: '#2a3044' } }
+      }
+    }
+  });
+}
+
+// ── Damage over time ─────────────────────────────────────────────────────
+function buildTimeChart(data) {
+  const dates   = allDates(data);
+  const players = topPlayers(data, 20);
+  const validActives = new Set([...activeChartPlayers].filter(p => players.includes(p)));
+  activeChartPlayers = validActives;
+
+  const toggles = document.getElementById('playerToggles');
+  toggles.innerHTML = '';
+  players.forEach(name => {
+    const col = playerColour(name, players);
+    const on  = activeChartPlayers.has(name);
+    const btn = document.createElement('div');
+    btn.className = 'ptbtn' + (on ? ' on' : '');
+    if (on) { btn.style.backgroundColor = col + '33'; btn.style.borderColor = col; btn.style.color = col; }
+    btn.textContent = name;
+    btn.onclick = () => {
+      if (activeChartPlayers.has(name)) activeChartPlayers.delete(name);
+      else activeChartPlayers.add(name);
+      buildTimeChart(filtered());
+    };
+    toggles.appendChild(btn);
+  });
+
+  const datasets = players.filter(p => activeChartPlayers.has(p)).map(name => {
+    const col = playerColour(name, players);
+    return {
+      label: name,
+      data: dates.map(d => { const r = rankedOnly(data).find(r => r.date === d && r.name === name); return r ? r.points : null; }),
+      borderColor: col, backgroundColor: col + '22',
+      tension: 0, pointRadius: 4, pointHoverRadius: 6, spanGaps: true,
+    };
+  });
+
+  if (chartTime) chartTime.destroy();
+  chartTime = new Chart(document.getElementById('chartTime'), {
+    type: 'line',
+    data: { labels: dates, datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y?.toLocaleString()}` }}},
+      scales: {
+        x: { ticks: { color: '#7a8099', maxRotation: 35 }, grid: { color: '#2a3044' } },
+        y: { ticks: { color: '#7a8099', callback: v => (v/1e9).toFixed(1)+'B' }, grid: { color: '#2a3044' } }
+      }
+    }
+  });
+}
+
+function selectAllPlayers() { topPlayers(filtered(), 20).forEach(p => activeChartPlayers.add(p)); buildTimeChart(filtered()); }
+function selectNoPlayers()  { activeChartPlayers.clear(); buildTimeChart(filtered()); }
+
+// ── Traps joined ─────────────────────────────────────────────────────────
+function buildSessionsChart(data) {
+  const counts = {};
+  rankedOnly(data).forEach(r => { if (!counts[r.name]) counts[r.name] = new Set(); counts[r.name].add(r.date); });
+  const sorted = Object.entries(counts).map(([name, dates]) => [name, dates.size]).sort((a,b) => b[1]-a[1]).slice(0, 20);
+  const names  = sorted.map(e => e[0]);
+  const vals   = sorted.map(e => e[1]);
+  const cols   = names.map((n,i) => PALETTE[i % PALETTE.length]);
+  if (chartSessions) chartSessions.destroy();
+  chartSessions = new Chart(document.getElementById('chartSessions'), {
+    type: 'bar',
+    data: { labels: names, datasets: [{ data: vals, backgroundColor: cols.map(c=>c+'99'), borderColor: cols, borderWidth: 1.5 }] },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.parsed.x + ' traps' }}},
+      scales: {
+        x: { ticks: { color: '#7a8099', stepSize: 1 }, grid: { color: '#2a3044' } },
+        y: { ticks: { color: '#e4e8f0', font: { size: 11 } }, grid: { color: '#2a3044' } }
+      }
+    }
+  });
+}
+
+// ── Rank history ─────────────────────────────────────────────────────────
+function buildRankChart(data) {
+  const players  = topPlayers(data, 10);
+  const dates    = allDates(data);
+  const datasets = players.map((name, i) => {
+    const col = PALETTE[i % PALETTE.length];
+    return {
+      label: name,
+      data: dates.map(d => { const r = rankedOnly(data).find(r => r.date === d && r.name === name); return r ? r.rank : null; }),
+      borderColor: col, backgroundColor: col + '33',
+      tension: 0, pointRadius: 4, spanGaps: true,
+    };
+  });
+  if (chartRank) chartRank.destroy();
+  chartRank = new Chart(document.getElementById('chartRank'), {
+    type: 'line',
+    data: { labels: dates, datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { color: '#7a8099', font: { size: 10 }, boxWidth: 10, padding: 8 }}},
+      scales: {
+        x: { ticks: { color: '#7a8099', maxRotation: 35 }, grid: { color: '#2a3044' } },
+        y: { reverse: true, min: 1, ticks: { color: '#7a8099', stepSize: 1 }, grid: { color: '#2a3044' } }
+      }
+    }
+  });
+}
+
+// ── Table ────────────────────────────────────────────────────────────────
+function buildTable(data) {
+  const body = document.getElementById('tableBody');
+  body.innerHTML = '';
+  [...data].reverse().forEach(r => {
+    const tr = document.createElement('tr');
+    if (r.rank === 1) tr.className = 'rank1';
+    else if (r.rank === 'Unranked') tr.className = 'unranked';
+    tr.innerHTML = `
+      <td>${r.date}</td>
+      <td><span class="trap-pill ${r.trap === 'Trap 1' ? 't1' : 't2'}">${r.trap}</span></td>
+      <td>${r.rank === 'Unranked' ? '—' : r.rank}</td>
+      <td>${r.name}</td>
+      <td class="num">${fmt(r.points)}</td>`;
+    body.appendChild(tr);
+  });
+}
+
+// ── Trap filter ──────────────────────────────────────────────────────────
+function setTrap(val) {
+  trapFilter = val;
+  ['fAll','fT1','fT2'].forEach(id => document.getElementById(id).classList.remove('active'));
+  document.getElementById(val === 'all' ? 'fAll' : val === 'Trap 1' ? 'fT1' : 'fT2').classList.add('active');
+  render();
+}
+
+// ── Render ───────────────────────────────────────────────────────────────
+function render() {
+  const data = filtered();
+  buildSessionScoreChart(data);
+  buildSessionPaxChart(data);
+  buildTimeChart(data);
+  buildSessionsChart(data);
+  buildRankChart(data);
+  buildTable(data);
+}
+
+// ── Boot: fetch data.json ────────────────────────────────────────────────
+fetch('data.json')
+  .then(r => {
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    return r.json();
+  })
+  .then(data => {
+    RAW = data;
+    const dates = allDates(RAW);
+    document.getElementById('lastUpdated').textContent = 'Last trap: ' + dates[dates.length - 1];
+    topPlayers(RAW, 6).forEach(p => activeChartPlayers.add(p));
+    document.getElementById('loadingScreen').style.display = 'none';
+    document.getElementById('app').classList.add('ready');
+    render();
+  })
+  .catch(err => {
+    const screen = document.getElementById('loadingScreen');
+    screen.classList.add('error');
+    document.getElementById('loadMsg').textContent = 'Could not load data.json — ' + err.message;
+  });
+</script>
+</body>
+</html>
